@@ -1,0 +1,126 @@
+name: Feature Enhancement
+description: Request a new feature or improvement to the activities system
+title: "[ENHANCEMENT] "
+labels: ["enhancement"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Have an idea to make the activities system better? Tell us about it! This template helps ensure we understand exactly what you need.
+
+  - type: textarea
+    id: feature_description
+    attributes:
+      label: What new feature or improvement do you want?
+      description: Describe the feature or enhancement you'd like to see
+      placeholder: "e.g., Add ability to export student lists, Show activity calendar view, Send email notifications to students"
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem_solved
+    attributes:
+      label: What problem would this solve?
+      description: Help us understand why this feature is needed
+      placeholder: "e.g., Currently it's hard to keep track of who's registered, Teachers need to manually check registrations daily"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: user_type
+    attributes:
+      label: Who would use this feature?
+      description: Understanding the user helps us design it better
+      options:
+        - Teachers/Staff
+        - Students
+        - Both teachers and students
+        - Administrators/Principal
+        - Parents
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: How important is this feature?
+      description: This helps us prioritize development
+      options:
+        - Must have - Critical for daily operations
+        - Should have - Would significantly improve efficiency
+        - Nice to have - Would be helpful but not essential
+    validations:
+      required: true
+
+  - type: textarea
+    id: current_workaround
+    attributes:
+      label: How do you handle this now?
+      description: What's your current process or workaround?
+      placeholder: "e.g., I manually write down registrations, I have to check each activity individually, I use a separate spreadsheet"
+
+  - type: textarea
+    id: suggested_solution
+    attributes:
+      label: Do you have ideas for how this could work?
+      description: Any thoughts on how this feature might be implemented? (Optional but helpful)
+      placeholder: "e.g., Add an Export button that downloads a CSV file, Create a new page that shows all activities in calendar format"
+
+  - type: checkboxes
+    id: feature_type
+    attributes:
+      label: What type of enhancement is this?
+      description: Select all that apply
+      options:
+        - label: New functionality/feature
+        - label: Improvement to existing feature
+        - label: User interface improvement
+        - label: Performance improvement
+        - label: Better error messages/user feedback
+        - label: Integration with other systems
+        - label: Reporting/analytics capability
+        - label: Mobile/responsive design improvement
+
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: How will we know this feature is complete?
+      description: What should the feature do when it's finished?
+      placeholder: |
+        e.g., 
+        - Teachers can click an Export button on any activity
+        - System generates a CSV file with student names and emails
+        - File downloads automatically to the teacher's computer
+        - Export includes registration date and time
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: Additional Information
+      description: Anything else we should know about this request?
+      placeholder: "e.g., This is needed before the start of next semester, Similar to feature X in other systems, Should work on mobile devices"
+
+  - type: markdown
+    attributes:
+      value: |
+        ## For the Developer
+        **Acceptance Criteria:**
+        - [ ] Review the feature request and confirm it aligns with system goals
+        - [ ] Break down the feature into smaller, implementable tasks
+        - [ ] Consider impact on existing functionality and user experience
+        - [ ] Implement the feature following existing code patterns and architecture
+        - [ ] Test the feature thoroughly with various scenarios
+        - [ ] Ensure the feature works for the specified user types
+        - [ ] Update documentation if needed
+        - [ ] Consider security implications and add appropriate protections
+
+        **Technical Considerations:**
+        - Maintain consistency with existing UI/UX patterns
+        - Follow the project's architecture (FastAPI backend, vanilla JS frontend)
+        - Consider performance impact, especially for data export features
+        - Ensure mobile responsiveness if UI changes are involved
+        - Add appropriate error handling and user feedback
+        - Test with realistic data volumes and edge cases

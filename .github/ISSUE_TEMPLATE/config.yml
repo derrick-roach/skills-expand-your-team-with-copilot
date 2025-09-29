@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Development Documentation
+    url: https://github.com/derrick-roach/skills-expand-your-team-with-copilot/blob/main/docs/how-to-develop.md
+    about: Need help understanding how the system works? Check out our development guide.
+  - name: General Support
+    url: https://github.com/derrick-roach/skills-expand-your-team-with-copilot/discussions
+    about: Have a question that doesn't fit the templates? Start a discussion.

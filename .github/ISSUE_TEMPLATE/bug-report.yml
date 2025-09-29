@@ -1,0 +1,115 @@
+name: Bug Report
+description: Report a problem with the activities system
+title: "[BUG] "
+labels: ["bug"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Found something that's not working correctly? Help us fix it by providing detailed information about the problem.
+
+  - type: textarea
+    id: problem_description
+    attributes:
+      label: What's the problem?
+      description: Describe what's happening that shouldn't be happening
+      placeholder: "e.g., Students can't register for Chess Club, Login button doesn't work, Activity times are showing incorrectly"
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected_behavior
+    attributes:
+      label: What should happen instead?
+      description: Describe what you expected to happen
+      placeholder: "e.g., Students should be able to click Register and see a confirmation message"
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps_to_reproduce
+    attributes:
+      label: How can someone else see this problem?
+      description: List the steps to reproduce the issue
+      placeholder: |
+        1. Go to the activities page
+        2. Click on Chess Club
+        3. Click the Register button
+        4. The error appears...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: affected_area
+    attributes:
+      label: Which part of the system has the problem?
+      description: This helps us know where to look
+      options:
+        - Student registration process
+        - Teacher login
+        - Activity display/listing
+        - Activity scheduling information
+        - Student removal/unregistration
+        - Website loading/performance
+        - Other (describe in details)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: How urgent is this?
+      description: This helps us prioritize the fix
+      options:
+        - High - System is broken, can't use it at all
+        - Medium - Important feature isn't working, but system is mostly usable
+        - Low - Minor issue, system works but could be better
+    validations:
+      required: true
+
+  - type: textarea
+    id: error_messages
+    attributes:
+      label: Error Messages
+      description: If you see any error messages, copy them here exactly as they appear
+      placeholder: "e.g., 'Activity not found', '401 Unauthorized', etc."
+
+  - type: dropdown
+    id: browser
+    attributes:
+      label: What browser are you using?
+      description: Sometimes problems only happen in certain browsers
+      options:
+        - Chrome
+        - Firefox
+        - Safari
+        - Edge
+        - Other (specify in additional notes)
+
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: Additional Information
+      description: Anything else that might help us understand and fix the problem?
+      placeholder: "e.g., This started happening yesterday, Only affects certain activities, Happens only when many students try to register at once"
+
+  - type: markdown
+    attributes:
+      value: |
+        ## For the Developer
+        **Acceptance Criteria:**
+        - [ ] Reproduce the issue using the provided steps
+        - [ ] Identify the root cause of the problem
+        - [ ] Implement a fix that addresses the issue without breaking other functionality
+        - [ ] Test the fix thoroughly to ensure it works
+        - [ ] Verify that similar issues don't exist elsewhere in the codebase
+        - [ ] Consider adding error handling or validation to prevent similar issues
+
+        **Investigation Areas:**
+        - Check browser console for JavaScript errors
+        - Review server logs for backend errors
+        - Test API endpoints directly if needed
+        - Verify database operations are working correctly
+        - Check for issues with authentication/authorization
+        - Test edge cases and error conditions

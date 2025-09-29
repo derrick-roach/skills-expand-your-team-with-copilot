@@ -1,0 +1,126 @@
+name: Manage Student Registration
+description: Add or remove students from activities
+title: "[REGISTRATION] Student registration for "
+labels: ["task", "student-management"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to add or remove students from extracurricular activities. This is helpful when students register in person or when you need to make manual adjustments.
+
+  - type: dropdown
+    id: action_type
+    attributes:
+      label: What do you need to do?
+      description: Select the type of registration change
+      options:
+        - Add student to activity
+        - Remove student from activity
+        - Move student between activities
+    validations:
+      required: true
+
+  - type: dropdown
+    id: activity_name
+    attributes:
+      label: Activity Name
+      description: Which activity is this for?
+      options:
+        - Chess Club
+        - Programming Class
+        - Morning Fitness
+        - Soccer Team
+        - Art Workshop
+        - Drama Club
+        - Math Club
+        - Debate Team
+        - Weekend Robotics Workshop
+        - Saturday Science Lab
+        - Sunday Chess Tournament
+        - Manga Maniacs
+        - Other (specify in details)
+    validations:
+      required: true
+
+  - type: textarea
+    id: student_emails
+    attributes:
+      label: Student Email(s)
+      description: List the student email addresses (one per line)
+      placeholder: |
+        student1@mergington.edu
+        student2@mergington.edu
+        student3@mergington.edu
+    validations:
+      required: true
+
+  - type: dropdown
+    id: second_activity
+    attributes:
+      label: Second Activity (for moves only)
+      description: If moving a student, which activity should they move TO?
+      options:
+        - Not applicable
+        - Chess Club
+        - Programming Class
+        - Morning Fitness
+        - Soccer Team
+        - Art Workshop
+        - Drama Club
+        - Math Club
+        - Debate Team
+        - Weekend Robotics Workshop
+        - Saturday Science Lab
+        - Sunday Chess Tournament
+        - Manga Maniacs
+        - Other (specify in details)
+
+  - type: textarea
+    id: reason
+    attributes:
+      label: Reason for Change
+      description: Why is this registration change needed?
+      placeholder: "e.g., Student registered in person, Schedule conflict resolved, Student changed their mind"
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: verification
+    attributes:
+      label: Verification
+      description: Please confirm the following
+      options:
+        - label: I have verified these are valid student email addresses
+          required: true
+        - label: I have confirmed the student(s) want this change
+          required: true
+        - label: I have checked that the activity has space available (for additions)
+
+  - type: textarea
+    id: additional_notes
+    attributes:
+      label: Additional Notes
+      description: Any other information needed?
+      placeholder: "e.g., Student needs to be notified of schedule, Parent permission obtained"
+
+  - type: markdown
+    attributes:
+      value: |
+        ## For the Developer
+        **Acceptance Criteria:**
+        - [ ] Validate that all email addresses follow the format xxx@mergington.edu
+        - [ ] For additions: Check that activity has available space (current participants < max_participants)
+        - [ ] For additions: Verify student is not already registered for the activity
+        - [ ] For removals: Verify student is currently registered for the activity
+        - [ ] Update the participants array in the database for the specified activity
+        - [ ] For moves: Remove from first activity and add to second activity
+        - [ ] Test that changes are reflected on the website
+        - [ ] Ensure registration counts update correctly
+
+        **Technical Implementation:**
+        - Modify the participants array in `src/backend/database.py` for the initial data
+        - The database operations should follow the same pattern as the signup/unregister endpoints
+        - Validate email format: should end with @mergington.edu
+        - Handle edge cases: duplicate registrations, removing non-existent students, capacity limits
+        - Test both the database changes and the frontend display
