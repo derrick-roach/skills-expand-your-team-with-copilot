@@ -1,0 +1,128 @@
+name: Modify Existing Activity
+description: Request changes to an existing extracurricular activity
+title: "[MODIFY ACTIVITY] Update "
+labels: ["enhancement", "activity-modification"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Need to make changes to an existing activity? This template will help you specify exactly what needs to be updated.
+
+  - type: dropdown
+    id: activity_name
+    attributes:
+      label: Activity to Modify
+      description: Which activity needs to be changed?
+      options:
+        - Chess Club
+        - Programming Class
+        - Morning Fitness
+        - Soccer Team
+        - Art Workshop
+        - Drama Club
+        - Math Club
+        - Debate Team
+        - Weekend Robotics Workshop
+        - Saturday Science Lab
+        - Sunday Chess Tournament
+        - Manga Maniacs
+        - Other (specify in details)
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: changes_needed
+    attributes:
+      label: What needs to be changed?
+      description: Select all that apply
+      options:
+        - label: Activity description
+        - label: Schedule (days/times)
+        - label: Maximum participants limit
+        - label: Activity name
+        - label: Other (specify in details)
+
+  - type: textarea
+    id: new_description
+    attributes:
+      label: New Description (if changing)
+      description: Provide the updated description for the activity
+      placeholder: "Leave blank if not changing the description"
+
+  - type: checkboxes
+    id: new_schedule_days
+    attributes:
+      label: New Days of the Week (if changing schedule)
+      description: Select all days when this activity will meet
+      options:
+        - label: Monday
+        - label: Tuesday
+        - label: Wednesday
+        - label: Thursday
+        - label: Friday
+        - label: Saturday
+        - label: Sunday
+
+  - type: input
+    id: new_start_time
+    attributes:
+      label: New Start Time (if changing)
+      description: What time should the activity start? (Use 24-hour format like 15:30 for 3:30 PM)
+      placeholder: "e.g., 15:30 (leave blank if not changing)"
+
+  - type: input
+    id: new_end_time
+    attributes:
+      label: New End Time (if changing)
+      description: What time should the activity end? (Use 24-hour format like 17:00 for 5:00 PM)
+      placeholder: "e.g., 17:00 (leave blank if not changing)"
+
+  - type: input
+    id: new_max_participants
+    attributes:
+      label: New Maximum Participants (if changing)
+      description: What should be the new maximum number of students?
+      placeholder: "e.g., 20 (leave blank if not changing)"
+
+  - type: input
+    id: new_activity_name
+    attributes:
+      label: New Activity Name (if renaming)
+      description: What should the new name be?
+      placeholder: "Leave blank if not changing the name"
+
+  - type: textarea
+    id: reason_for_change
+    attributes:
+      label: Reason for Changes
+      description: Why are these changes needed?
+      placeholder: "e.g., Room availability changed, More students interested than expected, Teacher schedule conflict"
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional_notes
+    attributes:
+      label: Additional Notes
+      description: Any other information the developer should know?
+      placeholder: "e.g., These changes should take effect next week, Need to notify currently registered students"
+
+  - type: markdown
+    attributes:
+      value: |
+        ## For the Developer
+        **Acceptance Criteria:**
+        - [ ] Locate the specified activity in `src/backend/database.py`
+        - [ ] Update only the fields that were specified for change
+        - [ ] Maintain existing participant registrations unless otherwise specified
+        - [ ] Update both the detailed schedule_details and human-readable schedule string
+        - [ ] Test that changes appear correctly on the website
+        - [ ] Verify that existing functionality still works after changes
+        - [ ] If activity name changes, ensure database references are updated consistently
+
+        **Technical Considerations:**
+        - Preserve existing participant list unless specifically requested to change
+        - Update schedule format to match existing patterns
+        - If changing max_participants to be lower than current registrations, flag this for teacher review
+        - Test both frontend display and backend API functionality

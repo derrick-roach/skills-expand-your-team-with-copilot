@@ -1,0 +1,67 @@
+name: General Question or Support
+description: Ask a question or get help with something not covered by other templates
+title: "[QUESTION] "
+labels: ["question"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Have a question that doesn't fit our other templates? We're here to help! Please provide as much detail as possible.
+
+  - type: textarea
+    id: question
+    attributes:
+      label: What's your question?
+      description: Please describe what you need help with
+      placeholder: "e.g., How do I reset a student's password? Can we add activities that meet only once? How do I view all students registered across all activities?"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: question_type
+    attributes:
+      label: What type of help do you need?
+      description: This helps us route your question to the right person
+      options:
+        - How to use an existing feature
+        - Understanding how something works
+        - Best practices or recommendations
+        - System limitations or capabilities
+        - Training or documentation request
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional Context
+      description: Any other information that might help us answer your question?
+      placeholder: "e.g., I'm new to using the system, This is for planning next semester's activities, I'm trying to help another teacher"
+
+  - type: checkboxes
+    id: urgency
+    attributes:
+      label: How urgent is this?
+      description: This helps us prioritize responses
+      options:
+        - label: Urgent - I need help today
+        - label: Not urgent - I can wait a few days for a response
+
+  - type: markdown
+    attributes:
+      value: |
+        ## For the Developer
+        **Response Guidelines:**
+        - [ ] Review the question and determine if it can be answered with existing documentation
+        - [ ] If it's a how-to question, provide step-by-step instructions
+        - [ ] If it's about system capabilities, reference relevant code or documentation
+        - [ ] If it reveals a gap in documentation, consider creating or updating docs
+        - [ ] If it's actually a feature request or bug, suggest using the appropriate template
+        - [ ] Be clear and avoid technical jargon since teachers may not be technical
+
+        **Consider:**
+        - Is this question likely to be asked by other teachers? (document the answer)
+        - Does this reveal a usability issue that should be addressed?
+        - Should this be handled as a separate issue type in the future?

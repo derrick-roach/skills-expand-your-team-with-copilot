@@ -1,0 +1,103 @@
+name: Add New Activity
+description: Request to add a new extracurricular activity to the system
+title: "[NEW ACTIVITY] Add "
+labels: ["enhancement", "new-activity"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping expand our extracurricular offerings! This template will help you provide all the details needed to add a new activity to the system.
+
+  - type: input
+    id: activity_name
+    attributes:
+      label: Activity Name
+      description: What should this activity be called?
+      placeholder: "e.g., Robotics Club, Creative Writing, Spanish Conversation"
+    validations:
+      required: true
+
+  - type: textarea
+    id: activity_description
+    attributes:
+      label: Activity Description
+      description: Provide a detailed description that will help students understand what this activity is about
+      placeholder: "e.g., Learn programming fundamentals and build software projects. Students will work on real-world coding challenges and create their own applications."
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: schedule_days
+    attributes:
+      label: Days of the Week
+      description: Select all days when this activity will meet
+      options:
+        - label: Monday
+        - label: Tuesday
+        - label: Wednesday
+        - label: Thursday
+        - label: Friday
+        - label: Saturday
+        - label: Sunday
+
+  - type: input
+    id: start_time
+    attributes:
+      label: Start Time
+      description: What time does the activity start? (Use 24-hour format like 15:30 for 3:30 PM)
+      placeholder: "e.g., 15:30"
+    validations:
+      required: true
+
+  - type: input
+    id: end_time
+    attributes:
+      label: End Time
+      description: What time does the activity end? (Use 24-hour format like 17:00 for 5:00 PM)
+      placeholder: "e.g., 17:00"
+    validations:
+      required: true
+
+  - type: input
+    id: max_participants
+    attributes:
+      label: Maximum Participants
+      description: What's the maximum number of students that can participate?
+      placeholder: "e.g., 15"
+    validations:
+      required: true
+
+  - type: input
+    id: teacher_sponsor
+    attributes:
+      label: Teacher Sponsor
+      description: Which teacher will be responsible for this activity?
+      placeholder: "e.g., Ms. Rodriguez"
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional_requirements
+    attributes:
+      label: Additional Requirements or Notes
+      description: Any special requirements, materials needed, or other important information?
+      placeholder: "e.g., Students need to bring their own laptop, No prior experience required, Activity will be held in Room 204"
+
+  - type: markdown
+    attributes:
+      value: |
+        ## For the Developer
+        **Acceptance Criteria:**
+        - [ ] Add new activity to the `initial_activities` dictionary in `src/backend/database.py`
+        - [ ] Include all provided details: name, description, schedule, max_participants
+        - [ ] Format schedule_details correctly with days array, start_time, and end_time
+        - [ ] Initialize with empty participants list
+        - [ ] Test that the new activity appears on the website
+        - [ ] Verify teachers can register students for the new activity
+
+        **Technical Notes:**
+        - The activity data should follow the existing structure in `database.py`
+        - Times should be in 24-hour format (HH:MM)
+        - Days should be full names (e.g., "Monday", not "Mon")
+        - The schedule string should be human-readable (e.g., "Mondays and Wednesdays, 3:30 PM - 5:00 PM")
